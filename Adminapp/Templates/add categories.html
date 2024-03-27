@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% block content %}
+<form action="{% url 'categories' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+<div class="col-md-6">
+    <div class="card mb-4">
+      <h5 class="card-header">Add Categories</h5>
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Category Name</label>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlReadOnlyInput1" class="form-label">Image</label>
+          <input         
+            class="form-control"
+            name="image"
+            type="file"
+            id="exampleFormControlReadOnlyInput1"
+            placeholder=""
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlReadOnlyInputPlain1" class="form-label">Description</label>
+          <input
+            type="text"
+            name="description"
+            class="form-control"
+            id="exampleFormControlReadOnlyInputPlain1"
+            placeholder="Description"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="buy-now">
+    <button type="submit" class="btn btn btn-outline-primary">
+      Submit</button>
+  </div>
+</form>
+{% endblock %}
