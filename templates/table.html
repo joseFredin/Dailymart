@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="card">
+    <h5 class="card-header">Categories</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        {% for i in data %}
+        <tbody class="table-border-bottom-0">
+          <tr>
+            <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{i.id}}</strong></td>
+            <td>{{i.Name}}</td>
+            <td>
+              <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                <li  class="avatar">
+                  <img src="{{i.Image.url}}" alt="Avatar" >
+                </li>
+              </ul>
+          </td>
+          <td>{{i.Description}}</td>
+            <td>
+              <div class="buy-now"><a href="{% url 'Edit' id=i.id %}">
+                <button type="submit"
+                  class="btn btn btn-outline-primary">Edit
+                  </button></a>
+              </div>
+            </td>
+            <td>
+              <div class="buy-now"><a href="{% url 'Delete' id=i.id %}">
+                <button type="submit"
+                  class="btn btn btn-outline-primary">Delete
+                  </button></a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+</div>
+{% endblock %}

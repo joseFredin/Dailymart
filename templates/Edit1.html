@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+{% block content %}
+{% for i in data %}
+<form action="{% url 'update1' id=i.id %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+<div class="col-md-6">
+    <div class="card mb-4">
+      <h5 class="card-header">Add Products</h5>
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Product Name</label>
+          <input
+            type="text"
+            value="{{i.Name}}"
+            name="name"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="defaultSelect" class="form-label" >Category</label>
+          <select id="defaultSelect" class="form-select" name="category" >
+            <option value="Vegetables">Vegetables</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Spices">Spices</option>
+            <option value="Dairy Products">Dairy Products</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlReadOnlyInput1" class="form-label">Image</label>
+          <input
+            class="form-control"
+            name="image"
+            type="file"
+            id="exampleFormControlReadOnlyInput1"
+            placeholder=""
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlReadOnlyInputPlain1" class="form-label">Price</label>
+          <input
+            type="text"
+            value="{{i.Price}}"
+            name="price"
+            class="form-control"
+            id="exampleFormControlReadOnlyInputPlain1"
+            placeholder="Price"
+          />
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlReadOnlyInputPlain1" class="form-label">Quantity</label>
+            <input
+              type="text"
+              value="{{i.Quantity}}"
+              name="Quantity"
+              class="form-control"
+              id="exampleFormControlReadOnlyInputPlain1"
+              placeholder="Quantity"
+            />
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="buy-now">
+    <button type="submit"
+      class="btn btn btn-outline-primary">
+      Submit</button>
+  </div>
+</form>
+{% endfor %}
+{% endblock %}
